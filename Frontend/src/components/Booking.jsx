@@ -17,81 +17,100 @@ const Booking = (props) => {
   // State to track form submission
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const handleSubmit = (values, {resetForm}) => {
+  const handleSubmit = (values, { resetForm }) => {
     // Update seat statuses based on selected seats after form submission
     seats = seats.map(seat => ({
       ...seat,
       status: values.selectedSeats.includes(seat.id.toString()) ? 1 : seat.status
     }));
-   // Set form submission flag
+    // Set form submission flag
     setFormSubmitted(true);
 
     // Print selected seat numbers and IDs
     console.log("Form Submitted", values);
     console.log("Selected seats", values.selectedSeats);
-    resetForm()
+    resetForm();
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit} >
+    
+    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       {({ values, setFieldValue }) => (
-        <Form>
-          <div className="flex flex-wrap gap-2 p-4">
-            {seats.map((seat) => (
-              <label key={seat.id} className={`w-12 h-12 rounded-full flex items-center justify-center cursor-pointer ${values.selectedSeats.includes(seat.id.toString()) ? 'bg-green-500' : seat.status === 1 ? 'bg-red-500' : 'bg-blue-200'}`}>
+        <Form className="w-full mx-auto flex flex-wrap">
+          <div className="w-1/3 px-4 py-10">
+            <div className="grid grid-cols-4 gap-4">
+              {seats.map((seat) => (
+                <label key={seat.id} className={`rounded-full flex items-center justify-center cursor-pointer ${values.selectedSeats.includes(seat.id.toString()) ? 'bg-green-800' : seat.status === 1 ? 'bg-red-800 cursor-not-allowed' : 'bg-blue-700'}`}>
                 <Field
-                  type="checkbox"
-                  name="selectedSeats"
-                  value={seat.id.toString()}
-                  className="hidden"
-                  disabled={seat.status == 1}
-                  onClick={() => {
-                    if (!formSubmitted && seat.status !== 1) { // Check if the form is not submitted and seat is not reserved
-                      const updatedSeats = values.selectedSeats.includes(seat.id.toString())
-                        ? values.selectedSeats.filter(id => id !== seat.id.toString())
-                        : [...values.selectedSeats, seat.id.toString()];
-                      setFieldValue('selectedSeats', updatedSeats);
-                    }
-                  }}
-                />
-                {seat.id}
-              </label>
-            ))}
+                    type="checkbox"
+                    name="selectedSeats"
+                    value={seat.id.toString()}
+                    className="hidden"
+                    disabled={seat.status === 1}
+                    onClick={() => {
+                      if (!formSubmitted && seat.status !== 1) {
+                        const updatedSeats = values.selectedSeats.includes(seat.id.toString())
+                          ? values.selectedSeats.filter(id => id !== seat.id.toString())
+                          : [...values.selectedSeats, seat.id.toString()];
+                        setFieldValue('selectedSeats', updatedSeats);
+                      }
+                    }}
+                  />
+                  <span className="text-white">{seat.id}</span>
+                </label>
+              ))}
+            </div>
           </div>
-          {/*Field for Fullname*/}
-          <Field
-            type="text"
-            name="fullname"
-            placeholder="Full Name"
-            id="fullname"
-          />
-          {/*Field for email*/}
-          <Field
-            type="text"
-            name="email"
-            placeholder="Email"
-            id="email"
-          />
-          {/*Field for CNIC*/}
-          <Field
-            type="text"
-            name="cnic"
-            placeholder="CNIC without -"
-            id="cnic"
-          />
-          {/*Field for Mobile Number*/}
-          <Field
-            type="text"
-            name="phone"
-            placeholder="Mobile Phone"
-            id="phone"
-          />
-          <button type="submit" className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Book Selected Seats
-          </button>
+          <div className="w-1/3 px-4 py-10">
+            <Field
+              type="text"
+              name="fullname"
+              placeholder="Full Name"
+              id="fullname"
+              className="block w-full px-4 py-2 mb-2 border rounded focus:outline-none focus:border-blue-500"
+            />
+            <Field
+              type="text"
+              name="email"
+              placeholder="Email"
+              id="email"
+              className="block w-full px-4 py-2 mb-2 border rounded focus:outline-none focus:border-blue-500"
+            />
+            <Field
+              type="text"
+              name="cnic"
+              placeholder="CNIC without -"
+              id="cnic"
+              className="block w-full px-4 py-2 mb-2 border rounded focus:outline-none focus:border-blue-500"
+            />
+            <Field
+              type="text"
+              name="phone"
+              placeholder="Mobile Phone"
+              id="phone"
+              className="block w-full px-4 py-2 mb-2 border rounded focus:outline-none focus:border-blue-500"
+            />
+            <button type="submit" className="w-full bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              Book Selected Seats
+            </button>
+          </div>
+          <div className="w-1/3 px-4 py-10">
+            <div className='bg-gray-800 text-white px-4 py-2 rounded'>
+              <div className="text-center text-yellow-400 mb-4">
+                <label className='font-bold text-lg'>Booking Summary</label>
+              </div>
+              <p>Full Name: {values.fullname}</p>
+              <p>Email: {values.email}</p>
+              <p>CNIC: {values.cnic}</p>
+              <p>Contact: {values.phone}</p>
+              <p>Total Seats Selected: {values.selectedSeats.length}</p>
+              <p>Selected Seat Numbers: {values.selectedSeats.join(', ')}</p>
+            </div>
+          </div>
         </Form>
       )}
     </Formik>
+    
   );
 };
 

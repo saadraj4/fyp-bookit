@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+import {BrowserRouter as Router,Route,Routes} from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./admin/Login";
 import Register from "./pages/Register";
@@ -23,7 +18,7 @@ import FAQPage from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
 import AboutUs from "./pages/AboutUs";
 import BookingForm from "./pages/BookingForm";
-import AdminPage from "./admin/AdminPage";
+import Dashboard from "./admin/Dashboard";
 
 
 function App() {
@@ -50,7 +45,7 @@ function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/book/:id" element={<BookingForm />} />
           <Route path="/admin" element={<Login />} />
-          <Route path="/dashboard" element = {<AdminPage/>}/>
+          <Route path="/dashboard" element = {<Dashboard/>}/>
 
           {/*
             Invalid URL Routes

@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field,ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,21 +10,27 @@ const initialValues = {
   password: ''
 }
 
-// Validation schema
-const LoginSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Email is required'),
-  password: Yup.string().required('Password is required'),
-});
+// // Validation schema
+// const LoginSchema = Yup.object().shape({
+//   email: Yup.string().email('Invalid email').required('Email is required'),
+//   password: Yup.string().required('Password is required'),
+// });
 
 
 export default function Login() {
   const navigate = useNavigate()
-  const onSubmit = (values) => {
+  const onSubmit = (values, {resetForm,setFieldError}) => {
     console.log(values)
-    if (values.email == "admin@gmail.com" && values.password == "admin") {
+    if (values.email !== "admin@gmail.com" || values.password !== "admin") {
+      alert("Password Incorrect.")
+      setFieldError('general', 'Email or Password is incorrect');
+     
+    }
+    else {
       alert("Login Successful")
       navigate("/dashboard")
     }
+    resetForm()
   }
 
   return (
@@ -35,7 +41,7 @@ export default function Login() {
             <div className="text-5xl my-5 text-white font-bold">Sign In</div>
             <Formik
               initialValues={initialValues}
-              validationSchema={LoginSchema}
+              // validationSchema={LoginSchema}
               onSubmit={onSubmit}
             >
               {({ errors, touched }) => (
@@ -70,21 +76,20 @@ export default function Login() {
                       {errors.password && touched.password ? (
                         <div className="text-red-500">{errors.password}</div>
                       ) : null}
+
                     </div>
                   </div>
+                 
                   <div>
-                    <a className="text-white hover:text-[#f88c71]" href="#">
-                      Forgot Password ?
-                    </a>
-                  </div>
-                  <div>
+                
                     <button
                       type="submit"
                       className="p-2 my-5 px-16 border bg-slate-700 text-white duration-300 hover:bg-white hover:text-slate-700 rounded-md"
                     >
                       Login
                     </button>
-                  </div>
+                    </div>
+                    
                 </Form>
               )}
             </Formik>
