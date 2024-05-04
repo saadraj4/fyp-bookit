@@ -5,7 +5,7 @@ import { Formik, Form, Field } from 'formik';
 const AddBusForm = ({ onAddBus }) => {
   return (
     <Formik
-      initialValues={{ origin: '', destination: '' }}
+      initialValues={{ startLocation: '', endLocation: '' }}
       onSubmit={(values, { resetForm }) => {
         onAddBus({ ...values, seats: 40 });
         resetForm();

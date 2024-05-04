@@ -1,16 +1,11 @@
 const express = require("express")
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const DemoRoutes = require('./routes/DemoRoutes.js');
-const sequelize = require("./sequelize.js");
+const CustomerRoutes = require('./routes/CustomerRoutes.js');
+const sequelize = require('./sequelize');
 const app = express();
 const PORT = 80;
 
-// call the database connection function
-// connectDb();
-
-app.use(cors());
-app.use(bodyParser.json());
 
 // Check the database connection
 sequelize.authenticate()
@@ -21,7 +16,12 @@ sequelize.authenticate()
     console.error('Unable to connect to the database');
   });
 
-app.use('/api', DemoRoutes)
+
+app.use(cors());
+app.use(bodyParser.json());
+
+
+app.use('/api', CustomerRoutes)
 
 
 
