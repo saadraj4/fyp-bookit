@@ -1,6 +1,6 @@
-import express, { Router } from 'express'
+const express = require('express');
 const router = express.Router()
-import demo from '../controllers/DemoController';
+const demo = require('../controllers/DemoController');
 
 router.get('/', demo );
 
@@ -8,4 +8,4 @@ router.get('/', demo );
 
 
 
-export default router;
+module.exports = router

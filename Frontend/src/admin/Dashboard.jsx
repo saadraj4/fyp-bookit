@@ -1,17 +1,21 @@
+// AdminDashboard.js
 import React from 'react';
-import RouteManager from './RouteManager';
-import TicketManager from './TicketManager';
 
-function Dashboard() {
+const AdminDashboard = ({ children }) => {
   return (
-    <div className="min-h-screen bg-gray-100 p-5">
-      <h1 className="text-4xl font-bold text-center text-gray-900">Admin Dashboard</h1>
-      <div className="mt-10 grid grid-cols-2 gap-4">
-        <RouteManager />
-        <TicketManager />
-      </div>
+    <div className="flex">
+      <aside className="w-64 bg-gray-800 text-white h-screen">
+        {/* Navigation Links */}
+        <ul>
+          <li>Add Bus</li>
+          <li>Remove Bus</li>
+          <li>Update Ticket</li>
+          <li>Remove Ticket</li>
+        </ul>
+      </aside>
+      <main className="flex-1 p-8">{children}</main>
     </div>
   );
-}
+};
 
-export default Dashboard;
+export default AdminDashboard;

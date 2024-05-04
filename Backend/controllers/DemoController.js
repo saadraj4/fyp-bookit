@@ -6,8 +6,4 @@ const demo = (req, res) =>{
 }
 
 
-export default demo;
-
-module.exports ={
-    demo,
-}
+module.exports = demo

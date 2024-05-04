@@ -1,15 +1,17 @@
-import express from 'express';
-import connectDb from "./Config/database.js";
-import cors from 'cors';
-import pkg from 'body-parser';
-import DemoRoutes from './routes/DemoRoutes.js'
-const { json } = pkg;
+const express = require("express")
+const connectDb = require("./Config/database.js");
+const cors = ('cors');
+const bodyParser = ('body-parser');
+const DemoRoutes = ('./routes/DemoRoutes.js');
 const app = express();
-const PORT = 8080;
+const PORT = 80;
 
-connectDb()
-app.use(cors());
-app.use(json());
+
+// call the database connection function
+connectDb();
+
+// app.use(cors());
+// app.use(bodyParser.json());
 
 app.use('/api/user', DemoRoutes)
 

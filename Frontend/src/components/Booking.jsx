@@ -40,7 +40,7 @@ const Booking = (props) => {
           <div className="w-1/3 px-4 py-10">
             <div className="grid grid-cols-4 gap-4">
               {seats.map((seat) => (
-                <label key={seat.id} className={`rounded-full flex items-center justify-center cursor-pointer ${values.selectedSeats.includes(seat.id.toString()) ? 'bg-green-800' : seat.status === 1 ? 'bg-red-800 cursor-not-allowed' : 'bg-blue-700'}`}>
+                <label key={seat.id} className={`rounded-md py-3 flex items-center justify-center cursor-pointer ${values.selectedSeats.includes(seat.id.toString()) ? 'bg-green-500' : seat.status === 1 ? 'bg-red-800 cursor-not-allowed' : 'bg-blue-700'}`}>
                 <Field
                     type="checkbox"
                     name="selectedSeats"
