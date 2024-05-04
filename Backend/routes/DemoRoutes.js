@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router()
-const demo = require('../controllers/DemoController');
+const demo = require('../controllers/CustomerController');
 
-router.get('/', demo );
-
-
+router.post('/customers', demo.addCustomer);
 
 
 

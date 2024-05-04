@@ -1,5 +1,5 @@
 -- Table: Customer
-CREATE TABLE Customer (
+CREATE TABLE Customers (
     CustomerID INT PRIMARY KEY,
     Name VARCHAR(255) NOT NULL,
     Email VARCHAR(255) NOT NULL,
