@@ -8,10 +8,10 @@ const Booking = (props) => {
   // Initial values for Formik
   const initialValues = {
     selectedSeats: [],
-    fullname: "",
+    name: "",
     email: "",
-    cnic: "",
-    phone: "",
+    CNIC: "",
+    phoneNumber: "",
   };
 
   // State to track form submission
@@ -64,9 +64,9 @@ const Booking = (props) => {
           <div className="w-1/3 px-4 py-10">
             <Field
               type="text"
-              name="fullname"
+              name="name"
               placeholder="Full Name"
-              id="fullname"
+              id="name"
               className="block w-full px-4 py-2 mb-2 border rounded focus:outline-none focus:border-blue-500"
             />
             <Field
@@ -78,16 +78,16 @@ const Booking = (props) => {
             />
             <Field
               type="text"
-              name="cnic"
+              name="CNIC"
               placeholder="CNIC without -"
-              id="cnic"
+              id="CNIC"
               className="block w-full px-4 py-2 mb-2 border rounded focus:outline-none focus:border-blue-500"
             />
             <Field
               type="text"
-              name="phone"
-              placeholder="Mobile Phone"
-              id="phone"
+              name="phoneNumber"
+              placeholder="Mobile phoneNumber"
+              id="phoneNumber"
               className="block w-full px-4 py-2 mb-2 border rounded focus:outline-none focus:border-blue-500"
             />
             <button type="submit" className="w-full bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
@@ -99,10 +99,10 @@ const Booking = (props) => {
               <div className="text-center text-yellow-400 mb-4">
                 <label className='font-bold text-lg'>Booking Summary</label>
               </div>
-              <p>Full Name: {values.fullname}</p>
+              <p>Full Name: {values.name}</p>
               <p>Email: {values.email}</p>
-              <p>CNIC: {values.cnic}</p>
-              <p>Contact: {values.phone}</p>
+              <p>CNIC: {values.CNIC}</p>
+              <p>Contact: {values.phoneNumber}</p>
               <p>Total Seats Selected: {values.selectedSeats.length}</p>
               <p>Selected Seat Numbers: {values.selectedSeats.join(', ')}</p>
             </div>
