@@ -8,8 +8,7 @@ export default function Download() {
         <div className="md:col-span-1 col-span-2">
           <div className="text">
             <h1 className="text-slate-800 md:text-5xl text-3xl">
-              Download Our ro 
-              Mobile App Now
+              Download Our Mobile App Now
             </h1>
             <div className="content text-slate-600 ">
               <p className="my-4 mt-5 md:text-2xl text-xl">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 
 export default function AboutUs() {
@@ -21,12 +22,11 @@ export default function AboutUs() {
           Discover the world with Kainat Travels and embark on a journey that will leave you with memories to last a lifetime.
         </p>
         <div className="text-center">
-          <a
-            href="#contact"
+          <Link to ="/contact-us"
             className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition duration-300"
           >
             Contact Us
-          </a>
+          </Link>
         </div>
       </div>
     </div>

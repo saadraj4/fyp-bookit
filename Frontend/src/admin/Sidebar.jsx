@@ -12,8 +12,8 @@ function Sidebar() {
                     <li><Link to="/dashboard">Dashboard</Link></li>
                     <li><Link to="/addBus">Add Bus</Link></li>
                     <li><Link to="/removeBus">Remove Bus</Link></li>
-                    <li>Update Ticket</li>
-                    <li>Remove Ticket</li>
+                    <li><Link to="/updateTicket">Update Ticket</Link></li>
+                    <li><Link to="/removeTicket">Remove Ticket</Link></li>
                 </ul>
             </aside>
             <main className="flex-1 p-8"></main>
