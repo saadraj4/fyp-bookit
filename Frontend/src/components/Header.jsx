@@ -29,10 +29,25 @@ export default function Header() {
         )}
 
         <ul className="links z-10 gap-5 hidden sm:flex">
+
           <li className="nav-link">
             <Link to="/">Home</Link>
           </li>
           <li className="nav-link">
+            <Link to="/blog">Blog</Link>
+          </li>
+          <li className="nav-link">
+            <Link to="/faq">FAQ</Link>
+          </li>
+          <li className="nav-link">
+            <Link to="/about-us">About Us</Link>
+          </li>
+          <li className="nav-link">
+            <Link to="/contact-us">Contact Us</Link>
+          </li>
+
+
+          {/* <li className="nav-link">
             <Link to="/bus">Bus</Link>
           </li>
           <li className="nav-link">
@@ -43,19 +58,9 @@ export default function Header() {
           </li>
           <li className="nav-link">
             <Link to="/event">Event</Link>
-          </li>
-          <li className="nav-link">
-            <Link to="/blog">Blog</Link>
-          </li>
-          <li className="nav-link">
-            <Link to="/contact-us">Contact Us</Link>
-          </li>
-          <li className="nav-link">
-            <Link to="/register">Register</Link>
-          </li>
-          <li className="nav-link">
-            <Link to="/login">Login</Link>
-          </li>
+          </li> */}
+
+
         </ul>
 
         {/* Responsive menu */}

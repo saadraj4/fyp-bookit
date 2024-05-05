@@ -3,6 +3,7 @@ import Booking from "../components/Booking";
 import { useEffect } from "react";
 import Footer from "../components/Footer";
 import Features from "../components/Features";
+import Header from "../components/Header";
 
 export default function BookingForm() {
 
@@ -14,6 +15,7 @@ export default function BookingForm() {
 
     return (
         <>
+        <Header/>
         <Booking params={params} />
         <Features />
         <Footer />

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Header from '../components/Header';
 
 // FAQ data
 const faqData = [
@@ -23,7 +24,9 @@ const Accordion = ({ question, answer }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="border-b">
+        <>
+        
+        <div className="border-b bg-gray-600 bg-opacity-70 text-white">
             <button
                 className="w-full flex justify-between items-center py-3 px-4 focus:outline-none"
                 onClick={() => setIsOpen(!isOpen)}
@@ -37,6 +40,7 @@ const Accordion = ({ question, answer }) => {
                 </div>
             )}
         </div>
+        </>
     );
 };
 
@@ -51,8 +55,10 @@ const ContactPanel = () => (
 
 // Main FAQ Page component
 const FAQPage = () => (
-    <div className="flex justify-between gap-6 p-6">
-        <div className="flex-1">
+    <>
+    <Header/>
+    <div className="flex justify-between gap-6 p-6 background-image">
+        <div className="flex-1 ">
             {faqData.map((item, index) => (
                 <Accordion key={index} question={item.question} answer={item.answer} />
             ))}
@@ -61,6 +67,7 @@ const FAQPage = () => (
             <ContactPanel />
         </div>
     </div>
+    </>
 );
 
 export default FAQPage;

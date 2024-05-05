@@ -63,3 +63,18 @@
   }
 }
 
+
+.background-image{
+  background-image:  url('./assets/img/background.avif') !important;
+  background-repeat: no-repeat;
+background-position: center;
+object-fit: cover;
+
+}
+
+.background-image-contact{
+  background-image:  url('./assets/img/contact-background.avif') !important;
+  background-repeat: no-repeat;
+object-fit: contain;
+
+}

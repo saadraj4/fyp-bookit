@@ -7,7 +7,7 @@ import {
 export default function Features() {
   return (
     <div className="features w-100">
-      <div className="w-full bg-slate-800 p-20 mt-10 text-white  grid grid-cols-4">
+      <div className="w-full bg-slate-800 p-20  text-white  grid grid-cols-4">
         <div className="md:col-span-2 md:my-0 my-10 col-span-4 col feature4 px-5 md:px-10">
           <div className="font-bold text-white sm:text-5xl text-4xl">
             Our Features

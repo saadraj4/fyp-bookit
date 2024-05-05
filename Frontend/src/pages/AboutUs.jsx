@@ -1,9 +1,12 @@
 import React from 'react';
+import Header from '../components/Header';
 
 export default function AboutUs() {
   return (
-    <div className="bg-gradient-to-b from-blue-400 to-purple-600 py-16">
-      <div className="max-w-5xl mx-auto px-6 sm:px-8 py-12 bg-white rounded-lg shadow-lg">
+    <>
+    <Header/>
+    <div className="background-image py-16">
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 py-12 bg-gray-100 bg-opacity-40 font-semibold  text-center text-white rounded-lg shadow-lg">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Welcome to Bookit</h2>
         <p className="text-lg text-gray-800 mb-6">
           Your Journey Begins Here
@@ -27,5 +30,6 @@ export default function AboutUs() {
         </div>
       </div>
     </div>
+    </>
   );
 }

@@ -7,7 +7,7 @@ export default function FindABus() {
   return (
     <div>
     <Header/>
-    <ContactUs />
+    <ContactUs  />
     <Footer />
     </div>
   )

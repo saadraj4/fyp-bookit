@@ -17,7 +17,7 @@ export default function Footer() {
   };
 
   return (
-    <div className="footer w-full bg-[#EE6C4D] h-auto p-20">
+    <div className="footer w-full bg-[#140e35] h-auto p-20">
       <div className="sections grid grid-cols-3">
         <div className="payments px-4 col md:col-span-1 col-span-3">
           <div className="font-bold text-white md:text-3xl text-2xl my-5">
@@ -145,7 +145,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <p className="my-10 text-slate-800">
+        <p className="my-10 text-slate-200">
           Copyright &copy; {new Date().getFullYear()} Book Karo. All Rights Reserved.
         </p>
       </div>
