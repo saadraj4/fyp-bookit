@@ -36,11 +36,11 @@ const Booking = (props) => {
     
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       {({ values, setFieldValue }) => (
-        <Form className="w-full mx-auto flex flex-wrap">
-          <div className="w-1/3 px-4 py-10">
-            <div className="grid grid-cols-4 gap-4">
+        <Form className="w-full mx-auto flex flex-wrap ">
+          <div className="w-1/3 px-4 py-10 ">
+            <div className="flex flex-wrap grid-cols-4 gap-2">
               {seats.map((seat) => (
-                <label key={seat.id} className={`rounded-md py-3 flex items-center justify-center cursor-pointer ${values.selectedSeats.includes(seat.id.toString()) ? 'bg-green-500' : seat.status === 1 ? 'bg-red-800 cursor-not-allowed' : 'bg-blue-700'}`}>
+                <label key={seat.id} className={`rounded-md py-3 w-20 flex items-center justify-center cursor-pointer ${((seat.id-2)%4==0)?'mr-10':'mr-0'} ${values.selectedSeats.includes(seat.id.toString()) ? 'bg-green-500' : seat.status === 1 ? 'bg-red-800 cursor-not-allowed' : 'bg-blue-700'}`}>
                 <Field
                     type="checkbox"
                     name="selectedSeats"
@@ -61,8 +61,14 @@ const Booking = (props) => {
               ))}
             </div>
           </div>
-          <div className="w-1/3 px-4 py-10">
-            <Field
+          <div className="w-1/3 px-4 py-10 flex flex-col justify-around   border-2 rounded-md my-2 ">
+   <div>
+<section>
+Selected
+</section>
+   </div>
+   <div>
+   <Field
               type="text"
               name="name"
               placeholder="Full Name"
@@ -93,6 +99,8 @@ const Booking = (props) => {
             <button type="submit" className="w-full bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
               Book Selected Seats
             </button>
+   </div>
+          
           </div>
           <div className="w-1/3 px-4 py-10">
             <div className='bg-gray-800 text-white px-4 py-2 rounded'>
