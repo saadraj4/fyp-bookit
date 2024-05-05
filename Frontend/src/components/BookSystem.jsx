@@ -28,10 +28,12 @@ export default function BookSystem() {
   const [busOptions, setBusOptions] = useState([]);
   const navigate = useNavigate();
 
-  const onSubmit = async (values, { setSubmitting }) => {
+  const onSubmit = async (values, { setSubmitting,resetForm }) => {
     const fetchedBuses = await fetchBusData(values.origin, values.destination, values.date);
     setBusOptions(fetchedBuses);
     setSubmitting(false);
+    console.log(values);
+    resetForm()
   };
 
   return (

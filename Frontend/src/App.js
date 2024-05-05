@@ -19,6 +19,9 @@ import NotFound from "./pages/NotFound";
 import AboutUs from "./pages/AboutUs";
 import BookingForm from "./pages/BookingForm";
 import Dashboard from "./admin/Dashboard";
+import AddBusForm from "./admin/AddBusForm";
+import RemoveBusForm from "./admin/RemoveBusForm";
+import RemoveTicketForm from "./admin/RemoveTicketForm"
 
 
 function App() {
@@ -44,8 +47,16 @@ function App() {
           <Route path="/attraction-details" element={<AttractionDetails />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/book/:id" element={<BookingForm />} />
+
+          {/*Admin Routes Page redirection*/}
           <Route path="/admin" element={<Login />} />
           <Route path="/dashboard" element = {<Dashboard/>}/>
+          <Route path = "/addBus" element= {<AddBusForm/>}/>
+          <Route path="/removeBus" element = {<RemoveBusForm/>}/>
+          <Route path="/removeTicket" element = {<RemoveTicketForm/>}/>
+          <Route path="/removeBus" element = {<RemoveBusForm/>}/>
+
+
 
           {/*
             Invalid URL Routes

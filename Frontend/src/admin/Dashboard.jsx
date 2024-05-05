@@ -1,5 +1,6 @@
 // AdminDashboard.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const AdminDashboard = ({ children }) => {
   return (
@@ -7,8 +8,8 @@ const AdminDashboard = ({ children }) => {
       <aside className="w-64 bg-gray-800 text-white h-screen">
         {/* Navigation Links */}
         <ul>
-          <li>Add Bus</li>
-          <li>Remove Bus</li>
+          <li><Link to="/addBus">Add Bus</Link></li>
+          <li><Link to="/removeBus">Remove Bus</Link></li>
           <li>Update Ticket</li>
           <li>Remove Ticket</li>
         </ul>
