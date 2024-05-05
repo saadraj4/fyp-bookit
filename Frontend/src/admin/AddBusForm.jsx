@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
+import Sidebar from './Sidebar';
 
 const AddBusForm = () => {
   const initialValues = {
@@ -22,7 +23,9 @@ const AddBusForm = () => {
 
 
   return (
-    <div className="max-w-lg mx-auto">
+    <div className='flex'>
+    <Sidebar/>
+    <div className="max-w-lg mx-auto flex-1 my-10">
       <h1 className="text-2xl font-bold mb-4">Add Bus</h1>
       <Formik
         initialValues={initialValues}
@@ -92,7 +95,7 @@ const AddBusForm = () => {
         )}
       </Formik> 
     </div>
-  );
+  </div>);
 };
 
 export default AddBusForm;
