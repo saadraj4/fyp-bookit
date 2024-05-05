@@ -1,21 +1,15 @@
-// AdminDashboard.js
+//Dashboard.js
+import Sidebar from './Sidebar';
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const AdminDashboard = ({ children }) => {
+const AdminDashboard = () => {
   return (
-    <div className="flex">
-      <aside className="w-64 bg-gray-800 text-white h-screen">
-        {/* Navigation Links */}
-        <ul>
-          <li><Link to="/addBus">Add Bus</Link></li>
-          <li><Link to="/removeBus">Remove Bus</Link></li>
-          <li>Update Ticket</li>
-          <li>Remove Ticket</li>
-        </ul>
-      </aside>
-      <main className="flex-1 p-8">{children}</main>
+    <>
+    <div className='flex'>
+    <Sidebar/>
+    <div className='flex-1'>Dashboard</div>
     </div>
+    </>
   );
 };
 

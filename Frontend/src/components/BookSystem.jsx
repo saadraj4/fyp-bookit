@@ -3,12 +3,12 @@ import { Formik, Field, Form } from 'formik';
 import { useNavigate } from 'react-router-dom';
 
 const initialValues = {
-  origin: '',
-  destination: '',
+  startLocation: '',
+  endLocation: '',
   date: '',
 };
 
-const origins = [
+const startLocations = [
   { label: 'Lahore', value: 'Lahore' },
   { label: 'Karachi', value: 'Karachi' },
   { label: 'Islamabad', value: 'Islamabad' },
@@ -16,7 +16,7 @@ const origins = [
   { label: 'Quetta', value: 'Quetta' },
 ];
 
-const destinations = [
+const endLocations = [
   { label: 'Lahore', value: 'Lahore' },
   { label: 'Karachi', value: 'Karachi' },
   { label: 'Islamabad', value: 'Islamabad' },
@@ -29,7 +29,7 @@ export default function BookSystem() {
   const navigate = useNavigate();
 
   const onSubmit = async (values, { setSubmitting,resetForm }) => {
-    const fetchedBuses = await fetchBusData(values.origin, values.destination, values.date);
+    const fetchedBuses = await fetchBusData(values.startLocation, values.endLocation, values.date);
     setBusOptions(fetchedBuses);
     setSubmitting(false);
     console.log(values);
@@ -44,18 +44,18 @@ export default function BookSystem() {
             <p className='text-2xl py-3 pb-5'>Search for a route</p>
             <Form className='form sm:flex items-center justify-evenly'>
               <div className='from sm:w-[25%] py-2'>
-                <Field as='select' name='origin' className='w-full input border px-3 py-2 rounded'>
-                  <option value="">Select origin</option>
-                  {origins.map((origin, index) => (
-                    <option key={index} value={origin.value}>{origin.label}</option>
+                <Field as='select' name='startLocation' className='w-full input border px-3 py-2 rounded'>
+                  <option value="">Select Origin</option>
+                  {startLocations.map((startLocation, index) => (
+                    <option key={index} value={startLocation.value}>{startLocation.label}</option>
                   ))}
                 </Field>
               </div>
               <div className='from sm:w-[25%] py-2'>
-                <Field as='select' name='destination' className='w-full input border px-3 py-2 rounded'>
-                  <option value="">Select destination</option>
-                  {destinations.map((destination, index) => (
-                    <option key={index} value={destination.value}>{destination.label}</option>
+                <Field as='select' name='endLocation' className='w-full input border px-3 py-2 rounded'>
+                  <option value="">Select Destination</option>
+                  {endLocations.map((endLocation, index) => (
+                    <option key={index} value={endLocation.value}>{endLocation.label}</option>
                   ))}
                 </Field>
               </div>
@@ -100,7 +100,7 @@ export default function BookSystem() {
   );
 }
 
-async function fetchBusData(origin, destination, date) {
+async function fetchBusData(startLocation, endLocation, date) {
   // Simulate an API call
   return new Promise(resolve => setTimeout(() => resolve([
     {id: "1", name: 'Executive Class', time: '09:00', price: 'Rs 6200', features: ['30 KG per Seat', 'Movies & Entertainment', 'Mobile Charging', 'Meal', 'Free Internet', 'Extra Legroom'] },
