@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
 import { useNavigate } from 'react-router-dom';
+import { Luggage, Tv, Cable, Utensils, Wifi, Armchair } from 'lucide-react';
+
+import image from "../assets/logo/logo.png"
+
 
 const initialValues = {
   startLocation: '',
@@ -28,7 +32,7 @@ export default function BookSystem() {
   const [busOptions, setBusOptions] = useState([]);
   const navigate = useNavigate();
 
-  const onSubmit = async (values, { setSubmitting,resetForm }) => {
+  const onSubmit = async (values, { setSubmitting, resetForm }) => {
     const fetchedBuses = await fetchBusData(values.startLocation, values.endLocation, values.date);
     setBusOptions(fetchedBuses);
     setSubmitting(false);
@@ -73,26 +77,45 @@ export default function BookSystem() {
       </Formik>
       <div className="space-y-4 mt-8">
         {busOptions.map((bus, index) => (
-          <div key={index} className="bg-white shadow-lg rounded-lg p-6 flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center justify-center h-12 w-12 rounded-full bg-green-500 text-white">
-                <span>KT</span>
-              </div>
+          <div key={index} className="bg-white shadow-lg rounded-lg p-6 flex items-center justify-start gap-10">
+
+
+            <div className="flex flex-col justify-center  w-32  items-center ">
+              <img src={image} alt="" srcset="" />
+
+              <div className="text-lg  italic">{bus.time}</div>
+
+            </div>
+
+
+            <div className="flex flex-col flex-grow justify-center   items-start ">
               <div className="text-lg font-semibold">{bus.name}</div>
-            </div>
-            <div className="flex items-center space-x-10">
-              <div className="flex items-center space-x-2">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6 text-green-500">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <div>{bus.features ? bus.features.join(', ') : 'No features available'}</div>
+              <div className='flex gap-5 my-4'>
+                <Luggage stroke='green' fill='yellow' className='hover:bg-blue-700 rounded-md cursor-pointer' />
+                <Tv stroke='green' fill='yellow' className='hover:bg-blue-700 rounded-md cursor-pointer' />
+                <Cable stroke='green' fill='yellow' className='hover:bg-blue-700 rounded-md cursor-pointer' />
+                {(bus.name == "Executive Class") ?
+                  <>
+                    <Utensils stroke='green' fill='yellow' className='hover:bg-blue-700 rounded-md cursor-pointer' />
+                    <Wifi stroke='green' fill='yellow' className='hover:bg-blue-700 rounded-md cursor-pointer' />
+                    <Armchair stroke='green' fill='yellow' className='hover:bg-blue-700 rounded-md cursor-pointer' />
+                  </> : <></>}
               </div>
-              <div className="text-lg">{bus.time}</div>
-              <div className="text-lg font-bold">{bus.price}</div>
             </div>
+
+
+
+            <div className="text-lg font-bold mr-20">{bus.time}</div>
+
+            <section className='mr-20'>
+              <div className="text-lg font-bold">{bus.price}</div>
+              <p className='-mt-2 italic'>Per Person</p>
+            </section>
+
             <button onClick={() => navigate(`/book/${bus.id}`)} className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-colors">
-              Select
+              Book Now
             </button>
+
           </div>
         ))}
       </div>
@@ -103,7 +126,7 @@ export default function BookSystem() {
 async function fetchBusData(startLocation, endLocation, date) {
   // Simulate an API call
   return new Promise(resolve => setTimeout(() => resolve([
-    {id: "1", name: 'Executive Class', time: '09:00', price: 'Rs 6200', features: ['30 KG per Seat', 'Movies & Entertainment', 'Mobile Charging', 'Meal', 'Free Internet', 'Extra Legroom'] },
-    {id: "2", name: 'Standard Class', time: '12:00', price: 'Rs 4500', features: ['30 KG per Seat', 'Movies & Entertainment', 'Mobile Charging'] },
+    { id: "1", name: 'Executive Class', time: '09:00', price: 'Rs 6200', features: ['30 KG per Seat', 'Movies & Entertainment', 'Mobile Charging', 'Meal', 'Free Internet', 'Extra Legroom'] },
+    { id: "2", name: 'Standard Class', time: '12:00', price: 'Rs 4500', features: ['30 KG per Seat', 'Movies & Entertainment', 'Mobile Charging'] },
   ]), 1000));
 }
