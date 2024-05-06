@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { Square } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 // Dummy data for seat status: 0 for available, 1 for booked
 let seats = Array.from({ length: 40 }, (_, i) => ({ id: i + 1, status: 0 }));
 
 const Booking = (props) => {
+  const navigate = useNavigate()
+
   // Initial values for Formik
   const initialValues = {
     selectedSeats: [],
@@ -19,6 +22,7 @@ const Booking = (props) => {
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleSubmit = (values, { resetForm }) => {
+    
     // Update seat statuses based on selected seats after form submission
     seats = seats.map(seat => ({
       ...seat,
@@ -30,7 +34,7 @@ const Booking = (props) => {
     // Print selected seat numbers and IDs
     console.log("Form Submitted", values);
     console.log("Selected seats", values.selectedSeats);
-    resetForm();
+    navigate("/thankyou")
   };
 
   return (
@@ -42,7 +46,7 @@ const Booking = (props) => {
           <div className="w-1/3 px-4 py-10 ">
             <div className="flex flex-wrap grid-cols-4 gap-2">
               {seats.map((seat) => (
-                <label key={seat.id} className={`rounded-md py-3 w-20 flex items-center justify-center cursor-pointer ${((seat.id - 2) % 4 == 0) ? 'mr-10' : 'mr-0'} ${values.selectedSeats.includes(seat.id.toString()) ? 'bg-green-600' : seat.status === 1 ? 'bg-red-600 cursor-not-allowed' : 'bg-blue-600'}`}>
+                <label key={seat.id} className={`rounded-md py-3 w-20 flex items-center justify-center cursor-pointer ${((seat.id - 2) % 4 === 0) ? 'mr-10' : 'mr-0'} ${values.selectedSeats.includes(seat.id.toString()) ? 'bg-green-600' : seat.status === 1 ? 'bg-red-600 cursor-not-allowed' : 'bg-blue-600'}`}>
                   <Field
                     type="checkbox"
                     name="selectedSeats"
