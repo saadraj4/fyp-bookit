@@ -15,7 +15,6 @@ exports.addCustomer = async (req, res) => {
       CNIC
     });
 
-
     // Send a success response
     res.status(201).json({
       success: true,

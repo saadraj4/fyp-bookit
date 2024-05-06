@@ -3,7 +3,7 @@ import Header from '../components/Header';
 
 // FAQ data
 const faqData = [
-    { question: 'Why Kainat Travels?', answer: 'Because we offer ...' },
+    { question: 'Why Book It?', answer: 'Because we offer ...' },
     { question: 'What is online booking and how do I use it?', answer: 'Online booking is ...' },
     { question: 'How do I know if my purchase was successful?', answer: 'You will receive a confirmation email ...' },
     { question: 'Can customers choose their own seats?', answer: 'Yes, you can choose your seats during booking ...' },

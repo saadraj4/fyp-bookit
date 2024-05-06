@@ -7,9 +7,10 @@ export default function Download() {
       <div className="download-section grid grid-cols-2">
         <div className="md:col-span-1 col-span-2">
           <div className="text">
-            <h1 className="text-slate-800 md:text-5xl text-3xl">
-              Download Our Mobile App Now
-            </h1>
+          <h1 className="text-slate-800 md:text-5xl text-3xl font-semibold">COMING SOON...</h1>
+            <h3 className="text-slate-800 md:text-5xl text-2xl mt-2">
+              Mobile App
+            </h3>
             <div className="content text-slate-600 ">
               <p className="my-4 mt-5 md:text-2xl text-xl">
                 Download our app for the fastest, most convenient way to Book
