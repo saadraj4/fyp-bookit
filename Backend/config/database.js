@@ -1,7 +1,10 @@
-const sequelize = require("../sequelize.js");
+// db.js or something similar under a config or database directory
 
-// Check the database connection
-function connectDB() {
-    }
+const { Sequelize } = require('sequelize');
 
-module.exports = connectDB()
+const sequelize = new Sequelize('bookit', 'root', 'root', {
+    host: 'localhost',
+    dialect: 'mysql' // or whatever dialect you are using
+});
+
+module.exports = sequelize;

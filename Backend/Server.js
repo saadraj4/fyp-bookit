@@ -1,10 +1,11 @@
 const express = require("express")
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const CustomerRoutes = require('./routes/CustomerRoutes.js');
 const sequelize = require('./sequelize');
 const app = express();
 const PORT = 80;
+
+const busRouter = require('./routes/busRoutes');
 
 
 // Check the database connection
@@ -21,7 +22,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-app.use('/api', CustomerRoutes)
+app.use('/bus', busRouter)
 
 
 

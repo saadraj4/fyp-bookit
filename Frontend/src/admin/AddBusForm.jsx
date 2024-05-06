@@ -3,23 +3,38 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import Sidebar from './Sidebar';
+import axios from 'axios';
 
 const AddBusForm = () => {
   const initialValues = {
-    startLocation: '',
-    endLocation: '',
+    origin: '',
+    destination: '',
     date: '',
     time:'',
-    seats:40,
+    type:'',
+    price:0,
   };
+
+  const postUrl = 'http://localhost:80/bus';
+  
 
   const handleSubmit = (values,{resetForm}) => {
     console.log(values);
+    axios.post(postUrl, values)
+  .then(response => {
+    console.log('Post request successful:', response.data);
+    // Handle response data here
+  })
+  .catch(error => {
+    console.error('Error while making POST request:', error);
+    // Handle error here
+  });
     resetForm();
   }
-  // Mock data for startLocation and endLocation options
-  const startLocationOptions = ['Lahore', 'Karachi', 'Islamabad', 'Peshawer',"Quetta"];
-  const endLocationOptions = ['Lahore', 'Karachi', 'Islamabad', 'Peshawer',"Quetta"];
+  // Mock data for origin and destination options
+  const originOptions = ['Lahore', 'Karachi', 'Islamabad', 'Peshawer',"Quetta"];
+  const destinationOptions = ['Lahore', 'Karachi', 'Islamabad', 'Peshawer',"Quetta"];
+  const types = ["STANDARD","EXECUTIVE"]
 
 
   return (
@@ -34,12 +49,12 @@ const AddBusForm = () => {
         {({ handleSubmit }) => (
           <Form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="startLocation" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="origin" className="block text-sm font-medium text-gray-700">
                 origin
               </label>
-              <Field as="select" name="startLocation" className="mt-1 block w-full p-2 border rounded-md">
+              <Field as="select" name="origin" className="mt-1 block w-full p-2 border rounded-md">
                 <option value="">Select origin</option>
-                {startLocationOptions.map((option) => (
+                {originOptions.map((option) => (
                   <option key={option} value={option}>
                     {option}
                   </option>
@@ -47,16 +62,16 @@ const AddBusForm = () => {
               </Field>
             </div>
             <div>
-              <label htmlFor="endLocation" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="destination" className="block text-sm font-medium text-gray-700">
                 destination
               </label>
               <Field
                 as="select"
-                name="endLocation"
+                name="destination"
                 className="mt-1 block w-full p-2 border rounded-md"
               >
                 <option value="">Select destination</option>
-                {endLocationOptions.map((option) => (
+                {destinationOptions.map((option) => (
                   <option key={option} value={option}>
                     {option}
                   </option>
@@ -85,6 +100,43 @@ const AddBusForm = () => {
               className="mt-1 block w-full p-2 border rounded-md"
             />
           </div>
+
+          <div>
+            <label htmlFor="type" className="block text-sm font-medium text-gray-700">
+              type
+            </label>
+            <Field
+            as="select"
+              id="type"
+              name="type"
+              className="mt-1 block w-full p-2 border rounded-md"
+            >
+            <option value="">Select type</option>
+                {types.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+            </Field>
+          </div>
+
+          <div>
+            <label htmlFor="price" className="block text-sm font-medium text-gray-700">
+              Time
+            </label>
+            <Field
+              type="Number"
+              id="price"
+              name="price"
+              className="mt-1 block w-full p-2 border rounded-md"
+            />
+          </div>
+
+
+
+          
+
+
             <button
               type="submit"
               className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
