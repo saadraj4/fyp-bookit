@@ -15,11 +15,10 @@
     "webpack": "^4.41.4",
     "webpack-cli": "^4.10.0"
   },
-  
   "scripts": {
-    "start": "node server/main.js",
+    "start": "node init && node server/main.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev" : "node_modules/.bin/webpack && node server/main.js",
+    "dev": "node init && node_modules/.bin/webpack && node server/main.js",
     "webpack": "node_modules/.bin/webpack --watch"
   },
   "author": "",
