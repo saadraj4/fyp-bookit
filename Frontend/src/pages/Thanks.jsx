@@ -2,19 +2,18 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Banknote, Wallet, CreditCard } from 'lucide-react';
+import { useLocation } from "react-router-dom";
 
 
 
 function Thanks() {
 
+    const location = useLocation();
+    const { data } = location.state;
 
 
     const initialValues = {
-        selectedSeats: [23, 21],
-        name: "Saad Raja",
-        email: "saad@gmail.com",
-        CNIC: "4567890",
-        phoneNumber: "234567890-",
+        ...data
     };
 
     const [payment, setPayment] = useState('null')

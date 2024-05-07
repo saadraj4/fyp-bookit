@@ -1,4 +1,5 @@
 const Bus = require("../models/Bus")
+const { Op } = require("sequelize");
 
 const addBus = async (req, res) => {
     try {
@@ -30,21 +31,58 @@ const addBus = async (req, res) => {
 
 const getAllBuses = async (req, res) => {
     try {
-        // Fetch all buses from the database
-        const buses = await Bus.findAll();
+        const currentDate = new Date(); // Get the current date and time
+        const dateStr = currentDate.toISOString().split('T')[0]; // Format the date to YYYY-MM-DD
+        const timeStr = currentDate.toISOString().split('T')[1].substring(0, 8); // Format the time to HH:MM:SS
+
+        // Fetch all buses from the database that match the conditions
+        const buses = await Bus.findAll({
+            where: {
+                date: {
+                    [Op.gte]: dateStr // Dates that are greater than today
+                },
+            }
+        });
 
         // Respond with the fetched buses array
         res.status(200).send(buses);
-    } catch (error) {
+    } catch (error) {   
         // Handle potential errors
         res.status(500).send({ message: "Failed to retrieve buses due to an error.", error: error.message });
     }
 };
 
+const searchBuses = async (req, res) => {
+    try {
+        // Extract search parameters from query string
+        const { date, origin, destination } = req.query;
+
+        // Validate the presence of all required parameters
+        if (!date || !origin || !destination) {
+            return res.status(400).send({ message: "Please provide date, origin, and destination to search for buses." });
+        }
+
+        // Find buses that match the search criteria
+        const buses = await Bus.findAll({
+            where: {
+                date,
+                origin,
+                destination
+            }
+        });
+
+        // Respond with the list of matching buses
+        res.status(200).send(buses);
+    } catch (error) {
+        // Handle potential errors
+        res.status(500).send({ message: "Failed to search for buses due to an error.", error: error.message });
+    }
+};
 
 
 
 module.exports = {
     addBus, 
-    getAllBuses
+    getAllBuses,
+    searchBuses
 }

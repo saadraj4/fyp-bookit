@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { Square } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -8,15 +8,23 @@ let seats = Array.from({ length: 40 }, (_, i) => ({ id: i + 1, status: 0 }));
 
 const Booking = (props) => {
   const navigate = useNavigate()
+  
+  
 
   // Initial values for Formik
   const initialValues = {
+    id: props.id,
     selectedSeats: [],
     name: "",
     email: "",
     CNIC: "",
     phoneNumber: "",
   };
+
+  useEffect(() => {
+    console.log("Selected Bus: ", props.id);
+  },[])
+
 
   // State to track form submission
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -33,8 +41,8 @@ const Booking = (props) => {
 
     // Print selected seat numbers and IDs
     console.log("Form Submitted", values);
-    console.log("Selected seats", values.selectedSeats);
-    navigate("/thankyou")
+    // console.log("Selected seats", values.selectedSeats);
+    navigate("/thankyou",{state: {data: {...values}}})
   };
 
   return (
