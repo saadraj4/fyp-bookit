@@ -1,34 +1,147 @@
 // RemoveTicketForm.js
-import React from 'react';
-import { Formik, Form, Field } from 'formik';
-import Sidebar from './Sidebar';
+import React, { useState } from "react";
+import { Formik, Form, Field } from "formik";
+import Sidebar from "./Sidebar";
+import axios from "axios";
 
-const RemoveTicketForm = ({ onRemoveTicket }) => {
+const RemoveTicketForm = () => {
+  const [seats, setSeats] = useState([]);
+
+  const initialValues = {
+    origin: "",
+    destination: "",
+    date: "",
+    time: "",
+    seats: 40,
+  };
+
+  const handleSubmit = (values, { resetForm }) => {
+    const params = {
+      destination: values.destination,
+      origin: values.origin,
+      time: values.time,
+      date: values.date,
+    };
+
+    axios
+      .get(`http://localhost:80/booking/bus`, { params })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error while making Fetch request:", error);
+      });
+    console.log(values);
+    resetForm();
+  };
+  // Mock data for origin and destination options
+  const originOptions = [
+    "Lahore",
+    "Karachi",
+    "Islamabad",
+    "Peshawer",
+    "Quetta",
+  ];
+  const destinationOptions = [
+    "Lahore",
+    "Karachi",
+    "Islamabad",
+    "Peshawer",
+    "Quetta",
+  ];
+
   return (
-    <>
-    <div className='flex'>
-    <Sidebar />
-    <h1 className="text-2xl font-bold mb-4">Remove Ticket</h1>
-    <br />
-    <div className='flex-1'>
-    <Formik
-      initialValues={{ customerId: '' }}
-      onSubmit={(values) => {
-        onRemoveTicket(values.customerId);
-      }}
-    >
-      {({ isSubmitting }) => (
-        <Form>
-          <Field name="customerId" type="text" placeholder="Customer ID" className="input input-bordered" />
-          <button type="submit" disabled={isSubmitting} className="btn btn-error">
-            Remove Ticket
-          </button>
-        </Form>
+    <div className="flex">
+      <Sidebar />
+      <div className="max-w-lg mx-auto flex-1 my-10">
+        <h1 className="text-2xl font-bold mb-4">Remove Tickets</h1>
+        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+          {({ handleSubmit }) => (
+            <Form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label
+                  htmlFor="origin"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  origin
+                </label>
+                <Field
+                  as="select"
+                  name="origin"
+                  className="mt-1 block w-full p-2 border rounded-md"
+                >
+                  <option value="">Select origin</option>
+                  {originOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </Field>
+              </div>
+              <div>
+                <label
+                  htmlFor="destination"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  destination
+                </label>
+                <Field
+                  as="select"
+                  name="destination"
+                  className="mt-1 block w-full p-2 border rounded-md"
+                >
+                  <option value="">Select destination</option>
+                  {destinationOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </Field>
+              </div>
+              <div>
+                <label
+                  htmlFor="date"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Date
+                </label>
+                <Field
+                  type="date"
+                  id="date"
+                  name="date"
+                  className="mt-1 block w-full p-2 border rounded-md"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="time"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Time
+                </label>
+                <Field
+                  type="time"
+                  id="time"
+                  name="time"
+                  className="mt-1 block w-full p-2 border rounded-md"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+              >
+                Get Bus Tickets
+              </button>
+            </Form>
+          )}
+        </Formik>
+      </div>
+      {seats.length == 0 ? (
+        <div>Search Specific Bus Then Delete Tickets</div>
+      ) : (
+        <div></div>
       )}
-    </Formik>
     </div>
-    </div>
-    </>
   );
 };
 
