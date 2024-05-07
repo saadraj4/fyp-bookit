@@ -94,7 +94,7 @@ export default function BookSystem() {
 
 
             <div className="flex flex-col justify-center  w-32  items-center ">
-              <img src={image} alt="" srcset="" />
+              <img src={image} alt="image" srcSet="" />
 
               <div className="text-lg  italic">{bus.time}</div>
 

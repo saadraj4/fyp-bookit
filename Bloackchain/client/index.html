@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sample Dapp</title>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<h2>Hello World Ethereum Dapp</h2>
+
+<body>
+
+  <div id='div-vote'>
+    <div>
+      <h1>Panel G </h1>
+      <input type="radio" id="panel G" name="count" value="panel G">
+    </div>
+
+    <div>
+      <h1>Panel H </h1>
+      <input type="radio" id="panel H" name="count" value="panel H">
+    </div>
+
+    <div>
+      <h1>Panel I </h1>
+      <input type="radio" id="panel I" name="count" value="panel I">
+
+      <br>
+
+      <button id="setName">VOTE</button>
+      <button id="getName">SHOW</button>
+    </div>
+  </div>
+  <div class="container">
+    <div><label class="center-label" for="output">OUTPUT --> </label>
+      <div id="output">None</div>
+    </div>
+  </div>
+  <div class="container">
+    <div><label class="center-label" for="errorHolder">ERROR --> </label>
+      <div id="errorHolder">None</div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="dist/bundle.js"></script>
+</body>
+
+</html>

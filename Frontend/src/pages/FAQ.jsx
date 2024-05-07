@@ -3,20 +3,15 @@ import Header from '../components/Header';
 
 // FAQ data
 const faqData = [
-    { question: 'Why Book It?', answer: 'Because we offer ...' },
-    { question: 'What is online booking and how do I use it?', answer: 'Online booking is ...' },
-    { question: 'How do I know if my purchase was successful?', answer: 'You will receive a confirmation email ...' },
-    { question: 'Can customers choose their own seats?', answer: 'Yes, you can choose your seats during booking ...' },
-    { question: 'What ticket types are available for online purchase?', answer: 'We offer various ticket types ...' },
-    { question: 'What method of payment can I use to purchase e-tickets?', answer: 'Credit card, debit card, and online wallets ...' },
-    { question: 'How do I cancel my booking?', answer: 'You can cancel your booking by logging into your account ...' },
-    { question: 'How do I get a refund?', answer: 'You can request a refund by contacting our customer service ...' },
-    { question: 'What is the baggage allowance for my ticket?', answer: 'Baggage allowance varies depending on the ticket type ...' },
-    { question: 'Can I change my booking?', answer: 'Yes, you can change your booking by logging into your account ...' },
-    { question: 'What do I do if I miss my bus?', answer: 'If you miss your bus, you can contact our customer service ...' },
-    { question: 'How do I know if my bus is delayed?', answer: 'You will receive a notification if your bus is delayed ...' },
-    { question: 'Can I book a ticket for someone else?', answer: 'Yes, you can book a ticket for someone else ...' }
-
+    { question: 'Why Book it?', answer: 'Because we offer ' },
+    { question: 'What is online booking and how do I use it?', answer: 'Online Booking provides you the platform to book your ticket online and make your journey hassle free' },
+    { question: 'Can customers choose their own seats?', answer: 'Yes, you can choose your seats during booking process. You can choose multiple seats with only one transaction. This thing dont need you toenter our details everytime.' },
+    { question: 'What ticket types are available for online purchase?', answer: 'We offer various ticket types including executive and standard class.' },
+    { question: 'What method of payment can I use to purchase e-tickets?', answer: 'Credit card, debit card, and online wallets and cash can be used to purchase e-tickets.' },
+    { question: 'How do I get a refund?', answer: 'You can request a refund by contacting our customer service. Our helpdesk is available round the clock.' },
+    { question: 'What is the baggage allowance for my ticket?', answer: 'Baggage allowance varies depending on the ticket type, If the ticket type is standard, it allows 15kg of 2 baggage. if it is executive. it will allow 3 baggage of 30 kg.' },
+    { question: 'What do I do if I miss my bus?', answer: 'If you miss your bus, you can contact our customer service round the clok and get the assisstance from our support.' },
+    { question: 'How do I know if my bus is delayed?', answer: 'You will receive a notification by call and email if your bus is delayed, We will provide you with every kind of assistance that you need.' },  
 ];
 
 // Accordion component

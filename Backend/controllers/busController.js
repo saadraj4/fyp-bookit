@@ -79,10 +79,32 @@ const searchBuses = async (req, res) => {
     }
 };
 
+const removeBus = async (req, res) => {
+    console.log(req.body)
+    try {
+        await Bus.destroy({
+            where: {
+                origin: req.query.origin,
+                destination: req.query.destination,
+                date: req.query.date,
+                time: req.query.time,
+
+            }
+        });
+
+        // Respond with a success message
+        res.status(200).send({ message: "Bus deleted successfully!" });
+    } catch (error) {
+        console.log(error);
+        // Handle potential errors
+        res.status(500).send({ message: "Failed to delete bus due to an error.", error: error.message });
+    }
+};
 
 
 module.exports = {
     addBus, 
     getAllBuses,
-    searchBuses
+    searchBuses,
+    removeBus,
 }

@@ -1,6 +1,4 @@
 import React from 'react';
-import banner from '../assets/img/bus/banner.jpg';
-import img from '../assets/img/bus/2.png';
 export default function Banner() {
   return (
     <div>
@@ -12,7 +10,9 @@ export default function Banner() {
               We offer Online Digital Booking System
             </h2>
             <p className="dynamic-content sm:text-xl text-[16px] text-[#E0FBFC]">
-              Kali Linux, known initially as BackTrack Linux, is a free and open-source Linux-based operating system geared at advanced penetration testing and security auditing. Kali Linux has hundreds of tools that perform different information security activities, including penetration testing, security research, computer forensics, and reverse engineering.
+            your premier destination for hassle-free online bus ticket bookings. 
+            Our cutting-edge digital booking system is designed to simplify your travel planning process. 
+            Whether you're booking a quick trip or planning a multi-city tour, our platform offers easy navigation and a secure transaction environment
             </p>
           </div>
         </div>
