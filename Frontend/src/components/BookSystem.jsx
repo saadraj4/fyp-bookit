@@ -32,17 +32,6 @@ export default function BookSystem() {
   const [busOptions, setBusOptions] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios.get("http://localhost:80/bus")
-    .then(res => {
-      console.log(res.data);
-      setBusOptions(res.data)
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  }, [])
-
   const onSubmit = async (values, { setSubmitting, resetForm }) => {
     axios.get(`http://localhost:80/bus/search?date=${values.date}&origin=${values.origin}&destination=${values.destination}`)
     .then(res => {
@@ -125,7 +114,7 @@ export default function BookSystem() {
               <p className='-mt-2 italic'>Per Person</p>
             </section>
 
-            <button onClick={() => navigate(`/book/${bus.id}`)} className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-colors">
+            <button onClick={() => navigate(`/book/${bus.id}`, {state: {...bus}})} className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-colors">
               Book Now
             </button>
 

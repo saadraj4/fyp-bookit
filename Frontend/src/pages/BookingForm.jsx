@@ -1,9 +1,10 @@
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import Booking from "../components/Booking";
 import { useEffect } from "react";
 import Footer from "../components/Footer";
 import Features from "../components/Features";
 import Header from "../components/Header";
+
 
 export default function BookingForm() {
 

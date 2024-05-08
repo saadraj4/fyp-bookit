@@ -4,11 +4,21 @@ import { Square } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-// // Dummy data for seat status: 0 for available, 1 for booked
-// let seats = Array.from({ length: 40 }, (_, i) => ({ id: i + 1, status: 0 }));
+const getBusData = async (busId) => {
+  try {
+      // Replace 'http://localhost:3000/api' with your actual backend server URL
+      const response = await axios.get(`http://localhost:80/bus/bus/${busId}`);
+      return response.data;
+  } catch (error) {
+      console.error('Failed to fetch bus data:', error);
+      throw error; // Re-throw the error to handle it where the function is called
+  }
+};
 
 const Booking = (props) => {
   const navigate = useNavigate();
+  console.log(props.params);
+  const [busDetails, setBusDetails] = useState({});
   const [busId, setBusId] = useState(props.params.id);
   const [bookedSeat, setBookedSeats] = useState([]);
   const [seats, setSeats] = useState(
@@ -16,6 +26,8 @@ const Booking = (props) => {
   );
 
   useEffect(() => {
+    getBusData(busId).then(setBusDetails).catch(console.error);
+
     axios
       .get(`http://localhost:80/booking/bus/${busId}`)
       .then((res) => {
@@ -33,7 +45,10 @@ const Booking = (props) => {
       .catch((err) => {
         console.log(err);
       });
+      
   }, []);
+
+ 
 
   // Initial values for Formik
   const initialValues = {
@@ -181,21 +196,29 @@ const Booking = (props) => {
                   <div className="text-center text-yellow-400 mb-4">
                     <label className=" text-lg">Booking Summary</label>
                   </div>
-                  <p className="px-4">Full Name </p>
+                  <p className="px-4">Origin </p>
                   <p className="bg-blue-300 px-4 pt-2 bg-opacity-50 font-semibold">
-                    {values.name ? values.name : "--"}
+                    {busDetails.origin ? busDetails.origin: '--'}
                   </p>
-                  <p className="px-4">Email</p>
+                  <p className="px-4">Destination</p>
                   <p className="bg-blue-300  px-4 pt-2 bg-opacity-50 font-semibold">
-                    {values.email ? values.email : "--"}
+                  {busDetails.destination ? busDetails.destination: '--'}
+
                   </p>
-                  <p className="px-4">CNIC</p>
+                  <p className="px-4">Date</p>
                   <p className="bg-blue-300 px-4 pt-2 bg-opacity-50 font-semibold">
-                    {values.CNIC ? values.CNIC : "--"}
+                  {busDetails.date ? busDetails.date: '--'}
+
                   </p>
-                  <p className="px-4">Contact</p>
+                  <p className="px-4">Time</p>
                   <p className="bg-blue-300 px-4 pt-2 bg-opacity-50 font-semibold">
-                    {values.phoneNumber ? values.phoneNumber : "--"}
+                  {busDetails.time ? busDetails.time: '--'}
+
+                  </p>
+                  <p className="px-4">Price</p>
+                  <p className="bg-blue-300 px-4 pt-2 bg-opacity-50 font-semibold">
+                  {busDetails.price ? busDetails.price: '--'}
+
                   </p>
                   <p className="px-4">Total Seats Selected</p>
                   <p className="bg-blue-300 px-4 pt-2 bg-opacity-50 font-semibold">
