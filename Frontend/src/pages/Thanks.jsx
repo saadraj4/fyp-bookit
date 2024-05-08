@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Banknote, Wallet, CreditCard } from 'lucide-react';
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 
 
 function Thanks() {
-
+    const navigate = useNavigate();
     const location = useLocation();
+    console.log(location.state);
     const { data } = location.state;
 
 
@@ -17,6 +18,12 @@ function Thanks() {
     };
 
     const [payment, setPayment] = useState('null')
+
+    if (!data){
+        return <h2>Could not load data</h2>
+    }
+
+
     return (
         <>
             <Header />
@@ -48,14 +55,7 @@ function Thanks() {
                                         <td className="border border-gray-600 p-3 ">Phone Number</td>
                                         <td className="border border-gray-600 p-3">{initialValues.phoneNumber}</td>
                                     </tr>
-                                    <tr>
-                                        <td className="border border-gray-600 p-3 ">Total Seats</td>
-                                        <td className="border border-gray-600 p-3">{initialValues.selectedSeats.length}</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="border border-gray-600 p-3 ">Seat No</td>
-                                        <td className="border border-gray-600 p-3">{initialValues.selectedSeats.join(', ')}</td>
-                                    </tr>
+                                  
                                 </tbody>
 
                             </table>
@@ -64,7 +64,7 @@ function Thanks() {
 
 
                     <div className="p-4 bg-gray-700 bg-opacity-40 rounded-lg">
-                        <h3 className="text-center text-3xl font-semibold px-10">Choose Payment Method</h3>
+                        <h3 className="text-center text-3xl font-semibold px-10 text-white">Choose Payment Method</h3>
                         <div onClick={() => setPayment('cash')} className={` ${(payment === 'cash') ? 'bg-green-700' : 'bg-gray-400'} h-10  border rounded-lg flex justify-between items-center px-4 my-4 cursor-pointer  hover:bg-green-400`}>
                             <Banknote />
                             <p className="font-semibold">Cash Payment</p>
@@ -77,6 +77,11 @@ function Thanks() {
                         <div onClick={() => setPayment('card')} className={` ${(payment === 'card') ? 'bg-green-700' : 'bg-gray-400'} h-10  border rounded-lg flex justify-between items-center px-4 my-4 cursor-pointer  hover:bg-green-400`}>
                             <CreditCard />
                             <p className="font-semibold">Card Payment</p>
+                        </div>
+                        <div className="h-10  border rounded-lg justify-between items-center px-4 my-4 cursor-pointer bg-blue-700 w-fit hover:bg-green-400 block mx-auto">
+                        <button onClick={()=>navigate("/redirecting")}>
+                        Proceed
+                        </button>
                         </div>
                     </div>
                 </div>

@@ -79,7 +79,8 @@ const Booking = (props) => {
         seatNumbers: values.selectedSeats,
       })
       .then((res) => {
-        navigate("/thankyou", { state: { data: { ...values } } });
+        
+        navigate("/thankyou", { state: { data: {...values} } });
       })
       .catch((err) => {
         console.log(err);

@@ -16,6 +16,8 @@ import RemoveBusForm from "./admin/RemoveBusForm";
 import RemoveTicketForm from "./admin/RemoveTicketForm"
 import UpdateTicketForm from "./admin/UpdateTicketForm";
 import Thanks from "./pages/Thanks";
+import Redirect from "./pages/Redirect";
+
 
 function App() {
   return (
@@ -32,6 +34,7 @@ function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/book/:id" element={<BookingForm />} />
           <Route path="/thankyou" element={<Thanks />} />
+          <Route path="/redirecting" element={<Redirect/>}/>
 
           {/*Admin Routes Page redirection*/}
           <Route path="/admin" element={<Login />} />
