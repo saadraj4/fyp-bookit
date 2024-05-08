@@ -68,7 +68,7 @@ const RemoveTicketForm = () => {
   return (
     <div className="flex">
       <Sidebar />
-      <div className="flex flex-col w-full justify-center  items-center my-10">
+      <div className="flex-1 flex flex-col w-full justify-center  items-center my-10">
         <div className="max-w-lg my-10 flex justify-center align-items-center flex-col">
           <h1 className="text-2xl font-bold mb-4">Remove Tickets</h1>
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>

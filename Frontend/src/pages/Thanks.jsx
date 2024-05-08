@@ -55,6 +55,14 @@ function Thanks() {
                                         <td className="border border-gray-600 p-3 ">Phone Number</td>
                                         <td className="border border-gray-600 p-3">{initialValues.phoneNumber}</td>
                                     </tr>
+                                    <tr>
+                                        <td className="border border-gray-600 p-3 ">Total Seats</td>
+                                        <td className="border border-gray-600 p-3">{initialValues.selectedSeats.length}</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="border border-gray-600 p-3 ">Seat No</td>
+                                        <td className="border border-gray-600 p-3">{initialValues.selectedSeats.join(', ')}</td>
+                                    </tr>
                                   
                                 </tbody>
 
