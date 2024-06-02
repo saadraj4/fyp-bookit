@@ -32,8 +32,17 @@ const addBus = async (req, res) => {
 const getAllBuses = async (req, res) => {
     try {
         const currentDate = new Date(); // Get the current date and time
-        const dateStr = currentDate.toISOString().split('T')[0]; // Format the date to YYYY-MM-DD
-        const timeStr = currentDate.toISOString().split('T')[1].substring(0, 8); // Format the time to HH:MM:SS
+
+        const dateStr = currentDate.getFullYear() + '-' +
+            String(currentDate.getMonth() + 1).padStart(2, '0') + '-' +
+            String(currentDate.getDate()).padStart(2, '0');
+
+        // Format the time to HH:MM:SS using local time
+        const timeStr = String(currentDate.getHours()).padStart(2, '0') + ':' +
+            String(currentDate.getMinutes()).padStart(2, '0') + ':' +
+            String(currentDate.getSeconds()).padStart(2, '0');
+
+
 
         // Fetch all buses from the database that match the conditions
         const buses = await Bus.findAll({
@@ -46,11 +55,13 @@ const getAllBuses = async (req, res) => {
 
         // Respond with the fetched buses array
         res.status(200).send(buses);
-    } catch (error) {   
+    } catch (error) {
         // Handle potential errors
         res.status(500).send({ message: "Failed to retrieve buses due to an error.", error: error.message });
     }
 };
+
+
 
 const searchBuses = async (req, res) => {
     try {
@@ -125,7 +136,7 @@ const getBusById = async (req, res) => {
 
 
 module.exports = {
-    addBus, 
+    addBus,
     getAllBuses,
     searchBuses,
     removeBus,

@@ -8,7 +8,7 @@ import axios from 'axios';
 function Dashboard() {
   const [busOptions, setBusOptions] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:80/bus")
+    axios.get("http://localhost:80/bus/allbus")
     .then(res => {
       console.log(res.data);
       setBusOptions(res.data)
