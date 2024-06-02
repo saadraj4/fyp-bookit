@@ -30,6 +30,7 @@ function Dashboard() {
               <img src={image} alt="image" srcSet="" />
 
               <div className="text-lg  italic">{bus.time}</div>
+              <div className="text-lg  italic">{bus.date}</div>
 
             </div>
 
@@ -51,8 +52,9 @@ function Dashboard() {
 
 
 
-            <div className="text-lg font-bold mr-20">{bus.time}</div>
-
+            <div className="text-lg font-bold mr-18">{bus.origin}</div>
+            <div className="text-lg font-bold mr-20">{bus.destination}</div>
+            
             <section className='mr-20'>
               <div className="text-lg font-bold">{bus.price}</div>
               <p className='-mt-2 italic'>Per Person</p>

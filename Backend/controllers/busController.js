@@ -101,10 +101,34 @@ const removeBus = async (req, res) => {
     }
 };
 
+const getBusById = async (req, res) => {
+    try {
+        // Extract bus ID from request parameters
+        const { busId } = req.params;
+
+        // Find the bus in the database by ID
+        const bus = await Bus.findByPk(busId);
+
+        // Check if the bus exists
+        if (!bus) {
+            return res.status(404).send({ message: "Bus not found." });
+        }
+
+        // Respond with the bus details
+        res.status(200).send(bus);
+    } catch (error) {
+        // Handle potential errors
+        console.error('Error fetching bus details:', error);
+        res.status(500).send({ message: "Failed to retrieve bus details due to an error.", error: error.message });
+    }
+};
+
 
 module.exports = {
     addBus, 
     getAllBuses,
     searchBuses,
     removeBus,
+    getBusById,
+
 }

@@ -87,7 +87,7 @@ function Thanks() {
                             <p className="font-semibold">Card Payment</p>
                         </div>
                         <div className="h-10  border rounded-lg justify-between items-center px-4 my-4 cursor-pointer bg-blue-700 w-fit hover:bg-green-400 block mx-auto">
-                        <button onClick={()=>navigate("/redirecting")}>
+                        <button onClick={()=>navigate(`/redirecting?type=${payment}`)}>
                         Proceed
                         </button>
                         </div>

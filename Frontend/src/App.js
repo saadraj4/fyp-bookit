@@ -15,9 +15,10 @@ import AddBusForm from "./admin/AddBusForm";
 import RemoveBusForm from "./admin/RemoveBusForm";
 import RemoveTicketForm from "./admin/RemoveTicketForm"
 import UpdateTicketForm from "./admin/UpdateTicketForm";
-import Thanks from "./pages/Thanks";
-import Redirect from "./pages/Redirect";
+import PaymentGateway from "./pages/PaymentGateway";
 import RequestsComponent from "./components/Requests";
+import Payment from './pages/Payment';
+import ThankYou from './pages/ThankYou'
 
 
 function App() {
@@ -34,9 +35,10 @@ function App() {
           <Route path="/faq" element ={<FAQPage/>}/>
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/book/:id" element={<BookingForm />} />
-          <Route path="/thankyou" element={<Thanks />} />
-          <Route path="/redirecting" element={<Redirect/>}/>
+          <Route path="/thankyou" element={<PaymentGateway />} />
+          <Route path="/payment" element={<Payment/>}/>
           <Route path="/requests" element={<RequestsComponent/>}/>
+          <Route path="/done" element={<ThankYou/>}/>
 
 
           {/*Admin Routes Page redirection*/}

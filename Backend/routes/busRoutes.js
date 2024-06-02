@@ -7,6 +7,8 @@ router.get("/", busController.getAllBuses)
 router.get("/search", busController.searchBuses)
 
 router.delete('/buses', busController.removeBus);
+router.get("/:busId", busController.getBusById);
+
 
 
 module.exports = router

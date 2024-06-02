@@ -7,7 +7,7 @@ import axios from "axios";
 const getBusData = async (busId) => {
   try {
       // Replace 'http://localhost:3000/api' with your actual backend server URL
-      const response = await axios.get(`http://localhost:80/bus/bus/${busId}`);
+      const response = await axios.get(`http://localhost:80/bus/${busId}`);
       return response.data;
   } catch (error) {
       console.error('Failed to fetch bus data:', error);
@@ -198,7 +198,7 @@ const Booking = (props) => {
                     <label className=" text-lg">Booking Summary</label>
                   </div>
                   <p className="px-4">Origin </p>
-                  <p className="bg-blue-300 px-4 pt-2 bg-opacity-50 font-semibold">
+                  <p className="bg-blue-300 px-4 pt-2 bg-opacity-50 font-semibold ">
                     {busDetails.origin ? busDetails.origin: '--'}
                   </p>
                   <p className="px-4">Destination</p>
