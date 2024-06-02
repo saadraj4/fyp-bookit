@@ -19,9 +19,9 @@ function Dashboard() {
   }, [])
   return (
     <>
-    <div>
+    <div className='flex'>
     <div><Sidebar/></div>
-      <div className="space-y-4 mt-8">
+      <div className="space-y-4 mt-8 flex-1">
         {busOptions.map((bus, index) => (
           <div key={index} className="bg-white shadow-lg rounded-lg p-6 flex items-center justify-start gap-10">
 

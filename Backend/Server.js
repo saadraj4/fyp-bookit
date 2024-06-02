@@ -7,6 +7,8 @@ const PORT = 80;
 
 const busRouter = require("./routes/busRoutes");
 const bookingRouter = require("./routes/bookingRoutes");
+const contactUsRouter = require('./routes/contactUs');
+
 
 // Check the database connection
 sequelize
@@ -15,14 +17,15 @@ sequelize
     console.log("Database connection has been established successfully.");
   })
   .catch((err) => {
-    console.error("Unable to connect to the database");
+    console.error("Unable to connect to the database",err);
   });
 
 app.use(cors());
 app.use(bodyParser.json());
-
 app.use("/bus", busRouter);
 app.use("/booking", bookingRouter);
+app.use('/contact', contactUsRouter); // Use the contact us routes
+
 
 // Start the server
 app.listen(PORT, () => {

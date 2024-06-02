@@ -33,7 +33,7 @@ export default function Download() {
         </div>
         <div className="md:col-span-1 col-span-2">
           <div className="image md:ml-20 md:mt-0 mt-10">
-            <img src={downloadImg} className="h-full w-full" />
+            <img src={downloadImg} alt = "alternative"className="h-full w-full" />
           </div>
         </div>
       </div>

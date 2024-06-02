@@ -14,7 +14,6 @@ const addBooking = async (req, res) => {
       },
     });
 
-    console.log("HERE");
     // Create bookings for each seat number provided
     const bookings = await Promise.all(
       seatNumbers.map((seatNumber) => {
