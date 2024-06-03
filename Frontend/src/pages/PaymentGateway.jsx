@@ -23,6 +23,12 @@ function Thanks() {
         return <h2>Could not load data</h2>
     }
 
+    const paymentHandler = (type) => {
+        if(type=='card'){
+            navigate("/payment")
+        }
+    }
+
 
     return (
         <>
@@ -73,11 +79,7 @@ function Thanks() {
 
                     <div className="p-4 bg-gray-700 bg-opacity-40 rounded-lg">
                         <h3 className="text-center text-3xl font-semibold px-10 text-white">Choose Payment Method</h3>
-                        <div onClick={() => setPayment('cash')} className={` ${(payment === 'cash') ? 'bg-green-700' : 'bg-gray-400'} h-10  border rounded-lg flex justify-between items-center px-4 my-4 cursor-pointer  hover:bg-green-400`}>
-                            <Banknote />
-                            <p className="font-semibold">Cash Payment</p>
-
-                        </div>
+                        
                         <div onClick={() => setPayment('wallet')} className={` ${(payment === 'wallet') ? 'bg-green-700' : 'bg-gray-400'} h-10  border rounded-lg flex justify-between items-center px-4 my-4 cursor-pointer  hover:bg-green-400`}>
                             <Wallet />
                             <p className="font-semibold">Mobile Wallet</p>
@@ -87,7 +89,7 @@ function Thanks() {
                             <p className="font-semibold">Card Payment</p>
                         </div>
                         <div className="h-10  border rounded-lg justify-between items-center px-4 my-4 cursor-pointer bg-blue-700 w-fit hover:bg-green-400 block mx-auto">
-                        <button onClick={()=>navigate(`/redirecting?type=${payment}`)}>
+                        <button onClick={()=>paymentHandler(payment)}>
                         Proceed
                         </button>
                         </div>

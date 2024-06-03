@@ -9,7 +9,7 @@ app.use(express.static('client'));
 app.use(express.static('build/contracts'));
 // Serves the home page of the project
 app.get('/index', (req, res) => {
-  res.sendFile(`${proj_dir}/client/index.html`);
+  res.sendFile(`${proj_dir}/client/server`);
 });
 app.get('*', (req, res) => {
  res.status(404);

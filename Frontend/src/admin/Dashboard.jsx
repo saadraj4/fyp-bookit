@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react'
 import Sidebar from './Sidebar'
 import { Luggage, Tv, Cable, Utensils, Wifi, Armchair } from 'lucide-react';
-import image from "../assets/logo/logo.png"
+import logo from "../assets/logo/logo.png"
 import axios from 'axios';
 
 
@@ -27,7 +27,7 @@ function Dashboard() {
 
 
             <div className="flex flex-col justify-center  w-32  items-center ">
-              <img src={image} alt="image" srcSet="" />
+              <img src={logo} alt="logo"/>
 
               <div className="text-lg  italic">{bus.time}</div>
               <div className="text-lg  italic">{bus.date}</div>
@@ -41,7 +41,7 @@ function Dashboard() {
                 <Luggage stroke='green' fill='yellow' className='hover:bg-blue-700 rounded-md cursor-pointer' />
                 <Tv stroke='green' fill='yellow' className='hover:bg-blue-700 rounded-md cursor-pointer' />
                 <Cable stroke='green' fill='yellow' className='hover:bg-blue-700 rounded-md cursor-pointer' />
-                {(bus.type.toUpperCase() == "EXECUTIVE") ?
+                {(bus.type.toUpperCase() === "EXECUTIVE") ?
                   <>
                     <Utensils stroke='green' fill='yellow' className='hover:bg-blue-700 rounded-md cursor-pointer' />
                     <Wifi stroke='green' fill='yellow' className='hover:bg-blue-700 rounded-md cursor-pointer' />
